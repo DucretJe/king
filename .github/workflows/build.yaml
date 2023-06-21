@@ -28,7 +28,10 @@ jobs:
 
       - name: 🏷️ Get King's version
         id: get_king_version
-        run: echo "version=$(cat ./docker/Dockerfile | grep 'ENV KING_VER' | sed -n 's/.*v\([0-9]\.[0-9]\.[0-9]\).*/\1/p')" >> $GITHUB_OUTPUT
+        run: |
+          version=$(cat ./docker/Dockerfile | grep 'ENV KING_VER' | sed -n 's/.*v\([0-9]\.[0-9]\.[0-9]\).*/\1/p')
+          echo "version=${version}" >> $GITHUB_OUTPUT
+
 
       - name: 🏗️ Build & Push Docker image
         uses: docker/build-push-action@v4
@@ -36,5 +39,5 @@ jobs:
           context: ./docker
           push: true
           tags: |
-                ghcr.io/ducretje/king:latest
-                ghcr.io/ducretje/king:${{ steps.get_king_version.outputs.version }}
+            ghcr.io/ducretje/king:latest
+            ghcr.io/ducretje/king:${{ steps.get_king_version.outputs.version }}

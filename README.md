@@ -1,5 +1,9 @@
 # King docker image
 
+[![🫏 KICS](https://github.com/DucretJe/king/actions/workflows/KICS.yaml/badge.svg?branch=main)](https://github.com/DucretJe/king/actions/workflows/KICS.yaml)
+[![💫 Super-Linter](https://github.com/DucretJe/king/actions/workflows/linter.yaml/badge.svg?branch=main)](https://github.com/DucretJe/king/actions/workflows/linter.yaml)
+[![🚀 Build and Push Docker Image](https://github.com/DucretJe/king/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/DucretJe/king/actions/workflows/build.yaml)
+
 This repository creates a docker image for [King](https://github.com/ligreman/king)
 Dependencies on King are handled by renovate.
 
