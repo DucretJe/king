@@ -27,7 +27,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🏷️ Get King's version
+        id: get_king_version
         run: echo "version=$(cat ./docker/Dockerfile | grep 'ENV KING_VER' | sed -n 's/.*v\([0-9]\.[0-9]\.[0-9]\).*/\1/p')" >> $GITHUB_OUTPUT
+
+      - name: DEBUG
+        run: cat ./docker/Dockerfile | grep 'ENV KING_VER' | sed -n 's/.*v\([0-9]\.[0-9]\.[0-9]\).*/\1/p'
 
       - name: 🏗️ Build & Push Docker image
         uses: docker/build-push-action@v4
