@@ -2,5 +2,33 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "github>ducretje/renovate"
+  ],
+  "packageRules": [
+    {
+      "datasources": ["docker"],
+      "updateTypes": ["major", "minor", "patch"]
+    },
+    {
+      "datasources": ["repology"],
+      "packagePatterns": ["^debian_stable/"],
+      "separateMajorMinor": false,
+      "groupName": "debian packages",
+      "groupSlug": "debian"
+    }
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["^docker/.*Dockerfile$"],
+      "matchStrings": ["KING_VER (?<currentValue>.*)"],
+      "depNameTemplate": "ligreman/king",
+      "datasourceTemplate": "github-releases"
+    },
+    {
+      "fileMatch": ["^docker/.*Dockerfile$"],
+      "matchStrings": [
+        "#*renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?) versioning=(?<versioning>.*?)\nENV .*_VER (?<currentValue>.*?)\n"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
+    }
   ]
 }

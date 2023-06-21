@@ -1,9 +1,12 @@
-# Repository template
+# King docker image
 
-## Features
+This repository creates a docker image for [King](https://github.com/ligreman/king)
+Dependencies on King are handled by renovate.
 
-The repository is spawned with
+## How to
 
-* Renovate config file
-* Super Linter that runs on every push
-* Checkov that runs on PR or push on Main when in /terraform or workflow file
+### Alias
+
+```sh
+alias king ='docker run --rm -p 8080:80 -d --pull always ghcr.io/ducretje/king:latest'
+```
