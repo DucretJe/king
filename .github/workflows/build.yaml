@@ -26,7 +26,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get King's version
+      - name: 🏷️ Get King's version
         id: get_king_version
         run: |
           version=$(grep -o 'ENV KING_VER v[0-9]\.[0-9]\.[0-9]' ./docker/Dockerfile | sed -n 's/ENV KING_VER v\([0-9]\.[0-9]\.[0-9]\)/\1/p')
