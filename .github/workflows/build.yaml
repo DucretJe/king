@@ -21,9 +21,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PAT }}
 
+      - name: 🏷️ Get King's version
+        run: echo "::set-output name=version::$(cat docker/Dockerfile | grep 'ENV KING_VER' | sed -n 's/.*v\([0-9]\.[0-9]\.[0-9]\).*/\1/p')"
+
+
       - name: 🏗️ Build & Push Docker image
         uses: docker/build-push-action@v4
         with:
           context: ./docker
           push: true
-          tags: ghcr.io/ducretje-evooq/king:latest
+          tags: |
+                ghcr.io/ducretje-evooq/king:latest
+                ghcr.io/ducretje-evooq/king:${{ steps.get_king_version.outputs.version }}
