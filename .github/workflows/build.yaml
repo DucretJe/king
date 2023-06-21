@@ -26,4 +26,4 @@ jobs:
         with:
           context: ./docker
           push: true
-          tags: ghcr.io/ducretje-evooq/king:latest
+          tags: ghcr.io/ducretje/king:latest
