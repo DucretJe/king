@@ -1,6 +1,5 @@
 # King docker image
 
-[![🫏 KICS](https://github.com/DucretJe/king/actions/workflows/KICS.yaml/badge.svg?branch=main)](https://github.com/DucretJe/king/actions/workflows/KICS.yaml)
 [![💫 Super-Linter](https://github.com/DucretJe/king/actions/workflows/linter.yaml/badge.svg?branch=main)](https://github.com/DucretJe/king/actions/workflows/linter.yaml)
 [![🚀 Build and Push Docker Image](https://github.com/DucretJe/king/actions/workflows/build.yaml/badge.svg?branch=main)](https://github.com/DucretJe/king/actions/workflows/build.yaml)
 
