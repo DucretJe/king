@@ -5,7 +5,7 @@ ENV KING_VER v3.0.9
 ENV UNZIP_VER 6.0-26+deb11u1
 
 RUN apt-get update \
-    && apt-get install -y unzip=${UNZIP_VER} \
+    && apt-get install --no-install-recommends -y unzip=${UNZIP_VER} \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
