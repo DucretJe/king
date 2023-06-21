@@ -6,6 +6,11 @@ on:
     branches:
       - main
 
+permissions:
+  packages: write
+
+workflow_dispatch: # Allow to manually trigger the pipeline
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
