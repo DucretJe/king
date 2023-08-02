@@ -1,11 +1,11 @@
-FROM nginx:1.25.0-bullseye-perl
+FROM nginx:stable@sha256:57e42e00530faa65e8acf98c3cf7bf6794093a9841c8a676b6d2fd0a9ba7
 
 ENV KING_VER v3.0.9
 # renovate: datasource=repology depName=debian_11/unzip versioning=loose
-ENV UNZIP_VER 6.0-26+deb11u1
+ENV UNZIP_VER 6.0
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y unzip=${UNZIP_VER} \
+    && apt-get install --no-install-recommends -y "unzip=${UNZIP_VER}*" \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
