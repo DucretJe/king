@@ -7,13 +7,6 @@
     {
       "datasources": ["docker"],
       "updateTypes": ["major", "minor", "patch"]
-    },
-    {
-      "datasources": ["repology"],
-      "packagePatterns": ["^debian_stable/"],
-      "separateMajorMinor": false,
-      "groupName": "debian packages",
-      "groupSlug": "debian"
     }
   ],
   "regexManagers": [
