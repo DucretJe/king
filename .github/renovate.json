@@ -14,7 +14,7 @@
       "fileMatch": ["^docker/.*Dockerfile$"],
       "matchStrings": ["KING_VER (?<currentValue>.*)"],
       "depNameTemplate": "ligreman/king",
-      "datasourceTemplate": "github-releases"
+      "datasourceTemplate": "github-tags"
     },
     {
       "fileMatch": ["^docker/.*Dockerfile$"],
