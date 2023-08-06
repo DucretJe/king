@@ -28,4 +28,5 @@ jobs:
         with:
           tag: "${{ steps.king.outputs.tag }}"
           tag_exists_error: false
+          prefix: "v"
           message: "From King's latest tag: ${{ steps.king.outputs.tag }}"
