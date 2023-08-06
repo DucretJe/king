@@ -58,35 +58,35 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     const targetPage = page
     await scrollIntoViewIfNeeded([
       [
-        'form mat-icon'
+        'form > button:nth-of-type(2) mat-icon'
       ],
       [
-        'xpath///*[@id="header-container"]/form/button/span[1]/mat-icon'
+        'xpath///*[@id="header-container"]/form/button[2]/span[1]/mat-icon'
       ],
       [
-        'pierce/form mat-icon'
+        'pierce/form > button:nth-of-type(2) mat-icon'
       ]
     ], targetPage, timeout)
     const element = await waitForSelectors([
       [
-        'form mat-icon'
+        'form > button:nth-of-type(2) mat-icon'
       ],
       [
-        'xpath///*[@id="header-container"]/form/button/span[1]/mat-icon'
+        'xpath///*[@id="header-container"]/form/button[2]/span[1]/mat-icon'
       ],
       [
-        'pierce/form mat-icon'
+        'pierce/form > button:nth-of-type(2) mat-icon'
       ]
     ], targetPage, { timeout, visible: true })
     await element.click({
       offset: {
-        x: 12,
-        y: 11.234375
+        x: 9,
+        y: 17.734375
       }
     })
   }
 
-  await page.waitForFunction(`document.querySelector("body").innerText.includes("Connected to node")`)
+  await page.waitForFunction(`document.querySelector('body').innerText.includes('Kong node information')`)
   console.log('Validation passed')
 
   await browser.close()

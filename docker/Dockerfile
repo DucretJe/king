@@ -1,6 +1,6 @@
 FROM nginx:stable@sha256:57e42e00530faa65e8acf98c3cf7bf6794093a9841c8a676b6d2fd0a9ba7262f
 
-ENV KING_VER v3.0.9
+ENV KING_VER v3.0.11
 # renovate: datasource=repology depName=debian_11/unzip versioning=loose
 ENV UNZIP_VER 6.0
 
@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -LO https://github.com/ligreman/king/releases/download/${KING_VER}/King-for-Kong-${KING_VER}.zip -o King-for-Kong-${KING_VER}.zip \
+RUN curl -LO https://github.com/ligreman/king/releases/download/latest/King-for-Kong-${KING_VER}.zip -o King-for-Kong-${KING_VER}.zip \
     && unzip -o King-for-Kong-${KING_VER}.zip -d /usr/share/nginx/html/
 
 RUN sed -i 's/^pid.*/pid \/tmp\/nginx.pid;/' /etc/nginx/nginx.conf

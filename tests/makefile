@@ -25,7 +25,7 @@ build: psql_secret
 
 test: build
 	@echo ${ORANGE}Running tests 🧪${NC} && \
-	docker run --init --cap-add=SYS_ADMIN --network host --rm -v `pwd`/puppeteer.js:/workdir/puppeteer.js ghcr.io/puppeteer/puppeteer:latest bash -c 'node -e "$$(cat /workdir/puppeteer.js)"'; \
+	docker run --init --cap-add=SYS_ADMIN --network host --rm -v `pwd`/puppeteer.js:/workdir/puppeteer.js -v `pwd`:/output/ ghcr.io/puppeteer/puppeteer:latest bash -c 'node -e "$$(cat /workdir/puppeteer.js)"'; \
 	EXIT_CODE=$$?; \
 	if [ $$EXIT_CODE -eq 0 ]; then \
 		echo ${GREEN}Tests passed ✅${NC}; \
