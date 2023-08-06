@@ -58,40 +58,40 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     const targetPage = page
     await scrollIntoViewIfNeeded([
       [
-        'form mat-icon'
+        'form > button:nth-of-type(2) mat-icon'
       ],
       [
-        'xpath///*[@id="header-container"]/form/button/span[1]/mat-icon'
+        'xpath///*[@id="header-container"]/form/button[2]/span[1]/mat-icon'
       ],
       [
-        'pierce/form mat-icon'
+        'pierce/form > button:nth-of-type(2) mat-icon'
       ]
     ], targetPage, timeout)
     const element = await waitForSelectors([
       [
-        'form mat-icon'
+        'form > button:nth-of-type(2) mat-icon'
       ],
       [
-        'xpath///*[@id="header-container"]/form/button/span[1]/mat-icon'
+        'xpath///*[@id="header-container"]/form/button[2]/span[1]/mat-icon'
       ],
       [
-        'pierce/form mat-icon'
+        'pierce/form > button:nth-of-type(2) mat-icon'
       ]
     ], targetPage, { timeout, visible: true })
     await element.click({
       offset: {
-        x: 12,
-        y: 11.234375
+        x: 9,
+        y: 17.734375,
       }
     })
   }
 
-  await page.waitForFunction(`document.querySelector("body").innerText.includes("Connected to node")`)
+  await page.waitForFunction(`document.querySelector("body").innerText.includes("Kong node information")`)
   console.log('Validation passed')
 
   await browser.close()
 
-  async function waitForSelectors (selectors, frame, options) {
+  async function waitForSelectors(selectors, frame, options) {
     for (const selector of selectors) {
       try {
         return await waitForSelector(selector, frame, options)
@@ -102,7 +102,7 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     throw new Error('Could not find element for selectors: ' + JSON.stringify(selectors))
   }
 
-  async function scrollIntoViewIfNeeded (selectors, frame, timeout) {
+  async function scrollIntoViewIfNeeded(selectors, frame, timeout) {
     const element = await waitForSelectors(selectors, frame, { visible: false, timeout })
     if (!element) {
       throw new Error(
@@ -124,15 +124,15 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     await waitForInViewport(element, timeout)
   }
 
-  async function waitForConnected (element, timeout) {
+  async function waitForConnected(element, timeout) {
     return waitForFunction(() => element.getProperty('isConnected'), timeout)
   }
 
-  async function waitForInViewport (element, timeout) {
+  async function waitForInViewport(element, timeout) {
     return waitForFunction(() => element.isIntersectingViewport({ threshold: 0 }), timeout)
   }
 
-  async function waitForSelector (selector, frame, options) {
+  async function waitForSelector(selector, frame, options) {
     if (!Array.isArray(selector)) {
       selector = [selector]
     }
@@ -160,7 +160,7 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     return element
   }
 
-  async function waitForFunction (fn, timeout) {
+  async function waitForFunction(fn, timeout) {
     let isDone = false
     let result = false
     const check = async () => {
@@ -179,7 +179,7 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     }
   }
 
-  async function changeSelectElement (element, value) {
+  async function changeSelectElement(element, value) {
     await element.select(value)
     await element.evaluateHandle((e) => {
       e.blur()
@@ -187,7 +187,7 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     })
   }
 
-  async function changeElementValue (element, value) {
+  async function changeElementValue(element, value) {
     await element.focus()
     await element.evaluate((input, value) => {
       input.value = value
@@ -196,7 +196,7 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     }, value)
   }
 
-  async function typeIntoElement (element, value) {
+  async function typeIntoElement(element, value) {
     const textToType = await element.evaluate((input, newValue) => {
       if (
         newValue.length <= input.value.length ||

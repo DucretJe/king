@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -LO https://github.com/ligreman/king/releases/download/${KING_VER}/King-for-Kong-${KING_VER}.zip -o King-for-Kong-${KING_VER}.zip \
+RUN curl -LO https://github.com/ligreman/king/releases/download/latest/King-for-Kong-${KING_VER}.zip -o King-for-Kong-${KING_VER}.zip \
     && unzip -o King-for-Kong-${KING_VER}.zip -d /usr/share/nginx/html/
 
 RUN sed -i 's/^pid.*/pid \/tmp\/nginx.pid;/' /etc/nginx/nginx.conf
