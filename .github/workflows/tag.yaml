@@ -1,8 +1,13 @@
 ---
 name: 🏷️ Create/update tag
+
 on:
   push:
     branches: "main"
+
+permissions:
+  contents: write
+
 jobs:
   create-tag:
     runs-on: ubuntu-latest
