@@ -2,7 +2,7 @@
 name: 🏷️ Create/update tag
 on:
   push:
-    branch: "main"
+    branches: "main"
 jobs:
   create-tag:
     runs-on: ubuntu-latest
@@ -24,4 +24,3 @@ jobs:
           tag: "${{ steps.king.outputs.tag }}"
           tag_exists_error: false
           message: "From King's latest tag: ${{ steps.king.outputs.tag }}"
-
