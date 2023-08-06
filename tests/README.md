@@ -18,8 +18,11 @@ We created a puppeteer script using Chrome.
 
 The script has been modified to await `Kong node information` section to appear meaning it can connect to the Kong Admin API.
 <p align="center">
-  <img width="359" alt="image" src="https://github.com/DucretJe/king/assets/5384298/e40f8ee9-4aab-4cf0-b531-1e83a0509fc9">
+  <img width="470" alt="image" src="https://github.com/DucretJe/king/assets/5384298/b0715d7f-8cec-4f18-b6c6-64762a1ee24f">
 </p>
+
+
+
 
 > ✅ The test is successful if puppeteer catch the string `Kong node information`
 
