@@ -86,7 +86,7 @@ const puppeteer = require('puppeteer'); // v13.0.0 or later
     })
   }
 
-  await page.waitForFunction(`document.querySelector("body").innerText.includes("Kong node information")`)
+  await page.waitForFunction(`document.querySelector('body').innerText.includes('Kong node information')`)
   console.log('Validation passed')
 
   await browser.close()
