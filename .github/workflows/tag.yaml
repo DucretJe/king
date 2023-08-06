@@ -1,0 +1,27 @@
+---
+name: 🏷️ Create/update tag
+on:
+  push:
+    branch: "main"
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛎️ Checkout
+        uses: actions/checkout@v3
+
+      - name: 🔎 Find King's latest tag
+        uses: oprypin/find-latest-tag@v1
+        with:
+          repository: ligreman/king
+          releases-only: true
+        id: king
+
+      - name: 🏷️ Create tag
+        uses: rickstaa/action-create-tag@v1
+        id: "tag_create"
+        with:
+          tag: "${{ steps.king.outputs.tag }}"
+          tag_exists_error: false
+          message: "From King's latest tag: ${{ steps.king.outputs.tag }}"
+
