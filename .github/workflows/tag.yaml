@@ -20,6 +20,7 @@ jobs:
         with:
           repository: ligreman/king
           releases-only: true
+          prefix: "v"
         id: king
 
       - name: 🏷️ Create tag
@@ -28,5 +29,4 @@ jobs:
         with:
           tag: "${{ steps.king.outputs.tag }}"
           tag_exists_error: false
-          prefix: "v"
           message: "From King's latest tag: ${{ steps.king.outputs.tag }}"
