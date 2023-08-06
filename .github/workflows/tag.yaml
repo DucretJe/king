@@ -19,7 +19,7 @@ jobs:
         uses: oprypin/find-latest-tag@v1
         with:
           repository: ligreman/king
-          releases-only: true
+          releases-only: false
           prefix: "v"
         id: king
 
