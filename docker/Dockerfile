@@ -1,4 +1,4 @@
-FROM nginx:stable@sha256:858743c39b389877e596e6a15ee7d26d755cf7b2baea55d4f39fbdcbb1f0535c
+FROM nginx:stable@sha256:0f0c707b16468ea9b6cc13a315f29d2c84b0fc53c223ee4b3e8b882506343659
 
 ENV KING_VER v4.0.2
 # renovate: datasource=repology depName=debian_11/unzip versioning=loose
