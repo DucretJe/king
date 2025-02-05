@@ -18,7 +18,7 @@ jobs:
       run: mkdir -p results-dir
 
     - name: 📡 run kics Scan
-      uses: checkmarx/kics-github-action@v2.1.4
+      uses: checkmarx/kics-github-action@v2.1.5
       with:
         path: docker/
         fail_on: high,medium
